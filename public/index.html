@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="./css/style.css">
+</head>
+<body class="text-bg-dark container-fluid" style="max-height:100%;">
+    <div id="filterBar" class="text-bg-secondary border h-25 p-2">
+        <div class="row">
+                <h1 class="col-md-auto" style="text-align:center; margin:0 auto;">STORE API</h1>
+            </div>
+        <div class="row">
+            
+        <div class="col-sm">
+            <label for="category" class="align-middle">Category:</label>
+        
+        <select name="Category" id="category" class="align-middle">
+            <option value="ALL">All</option>
+            <option value="food">Food</option>
+            <option value="electronics">Electronics</option>
+            <option value="memes">Memes</option>
+            <option value="suffering">Suffering</option>
+        </select>
+    </div>
+    
+    <div class="col-sm">
+            <label for="filter" class="align-middle">Filter:</label>
+        <select name="Filter" id="filter" class="align-middle">
+            <option value="Ascending">Ascending</option>
+            <option value="Descending">Descending</option>
+            <option value="A To Z">A To Z</option>
+            <option value="Z To A">Z To A</option>
+        </select>
+    </div>
+    <div class="col-sm">
+        <label for="search" class="float-sm-right align-middle">Search:</label>
+        <input type="text" id="search" placeholder="" class="float-sm-right align-middle">
+        <button id="Finish" onmousedown="search()" class="align-middle">Search</button></div>
+</div>
+    </div>
+</div>
+    <div class="container w-50 scrollbar square scrollbar-default" style="max-height: 75vh;min-height:50vh; overflow-y: scroll;">
+        <h1>PRODUCTS:</h1>
+    <div id="productList" class="text-bg-dark container p-3">
+        PRODUCTLISTBLOCK
+    </div>
+    </div>
+    <footer class="text-bg-info border border-light" style="min-height: 12.5vh;" style="text-align:center;">
+        <h2>STORE API by ROGER T. GRANGE</h2>
+    </footer>
+    <script>
+        const search=()=>{
+            var local=window.location
+            
+            window.location.href=window.location.href.split("/")[0]+`/?category=${document.getElementById("category").value}&search=${document.getElementById("search").value}&filter=${document.getElementById("filter").value}`
+        }
+        let params=window.location.href.split("/?")[1]
+        if(params.length>1){
+            document.getElementById("category").value=params[1].split("&")[0].split("=")[1].replaceAll("%20"," ")
+            document.getElementById("search").value=params[1].split("&")[1].split("=")[1].replaceAll("%20"," ")
+            document.getElementById("filter").value=params[1].split("&")[2].split("=")[1].replaceAll("%20"," ")
+
+        }
+    </script>
+</body>
+</html>

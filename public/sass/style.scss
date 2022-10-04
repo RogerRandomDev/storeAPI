@@ -1,0 +1,23 @@
+// Variable overrides first
+$primary: #900;
+$enable-shadows: true;
+$prefix: "mo-";
+
+// Then import Bootstrap
+@import "../../node_modules/bootstrap/scss/bootstrap";
+
+
+*{
+    list-style: none;
+}
+ul{
+    padding:0;
+    margin:0;
+}
+.te{
+    float:right;
+}
+label{
+    font-size: 2em;
+}
+body{height: -webkit-fill-available;overflow-y: hidden;}
