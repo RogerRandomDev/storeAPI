@@ -7,7 +7,7 @@
     <title>Document</title>
     <link rel="stylesheet" href="./css/style.css">
 </head>
-<body class="text-bg-dark container-fluid" style="max-height:100%;">
+<body class="text-bg-dark container-fluid" style="max-height:100%; min-height: 100%;">
     <div id="filterBar" class="text-bg-secondary border h-25 p-2">
         <div class="row">
                 <h1 class="col-md-auto" style="text-align:center; margin:0 auto;">STORE API</h1>
@@ -42,9 +42,9 @@
 </div>
     </div>
 </div>
-    <div class="container w-50 scrollbar square scrollbar-default" style="max-height: 75vh;min-height:50vh; overflow-y: scroll;">
+    <div class="w-100 productList" style="min-width: 100vw; min-height: 75vh;">
         <h1>PRODUCTS:</h1>
-    <div id="productList" class="text-bg-dark container p-3">
+    <div class="text-bg-dark" id="productList">
         PRODUCTLISTBLOCK
     </div>
     </div>
@@ -59,9 +59,9 @@
         }
         let params=window.location.href.split("/?")[1]
         if(params.length>1){
-            document.getElementById("category").value=params[1].split("&")[0].split("=")[1].replaceAll("%20"," ")
-            document.getElementById("search").value=params[1].split("&")[1].split("=")[1].replaceAll("%20"," ")
-            document.getElementById("filter").value=params[1].split("&")[2].split("=")[1].replaceAll("%20"," ")
+            document.getElementById("category").value=params.split("&")[0].split("=")[1].replaceAll("%20"," ")
+            document.getElementById("search").value=params.split("&")[1].split("=")[1].replaceAll("%20"," ")
+            document.getElementById("filter").value=params.split("&")[2].split("=")[1].replaceAll("%20"," ")
 
         }
     </script>

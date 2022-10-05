@@ -2,7 +2,7 @@ const {getProducts}=require("../database")
 
 
 const buildProduct=(product)=>{
-    return `<div class="border rounded text-bg-secondary col-sm" style="margin:0 0 0 0;"><h1>${product.name}</h1><h6>${product.category}</h6><h3>$${product.price}</h3></div>`
+    return `<div class="border rounded text-bg-secondary productCard w-1875"><h1>${product.name}</h1><h3>$${product.price}</h3><h6>${product.category}</h6></div>`
 }
 
 
@@ -36,13 +36,9 @@ const getProductList=(filterType="",category="",search="")=>{
         });break
         default:break
     }
-    console.log(filterType=="a to z")
-    var id=0;
-    return "<div>"+out.map(product=>{
-        var out=""
-        if(id%3==0){out="</div><div class='row'>"}
-        id+=1
-        return out+buildProduct(product)})+"</div>"
+    
+    return ((out.map(product=>{
+        return buildProduct(product)})+"").replaceAll("</div>,<div","</div><div"))
 }
 
 
